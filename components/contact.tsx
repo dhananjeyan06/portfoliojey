@@ -37,7 +37,7 @@ export default function Contact() {
 
     try {
       await emailjs.send(
-        "service_fy6gcmv",
+        "service_fy69cmv",
         "template_9f519z3",
         {
           name: formData.name,
@@ -45,7 +45,7 @@ export default function Contact() {
           subject: formData.subject,
           message: formData.message,
         },
-        "tDfrvAEWdC407N2hm"
+        "tDfTvAeWdC407N2hm"
       )
 
       toast({
