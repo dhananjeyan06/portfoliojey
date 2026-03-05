@@ -55,7 +55,7 @@ export default function Contact() {
     {
       icon: <Mail className="h-6 w-6 text-primary" />,
       title: "Email",
-      value: "jeyan2468@mepcoeng.ac.in",
+      value: "jeyan2468@gmail.com",
       link: "mailto:contact@memoryleaked.dev",
     },
     {
