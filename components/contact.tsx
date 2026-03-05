@@ -55,6 +55,7 @@ export default function Contact() {
 
       setFormData({ name: "", email: "", subject: "", message: "" })
     } catch (error) {
+      console.error("EmailJS Error:", error)
       toast({
         title: "Failed to send ❌",
         description: "Something went wrong. Please try again.",
