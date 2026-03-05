@@ -108,7 +108,7 @@ export default function Contact() {
                       <Input
                         id="name"
                         name="name"
-                        placeholder="Dhanan Jeyan G"
+                        placeholder="enter your name"
                         value={formData.name}
                         onChange={handleChange}
                         required
@@ -120,7 +120,7 @@ export default function Contact() {
                         id="email"
                         name="email"
                         type="email"
-                        placeholder="jeyan2468@gmail.com"
+                        placeholder="enter valid email"
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -132,7 +132,7 @@ export default function Contact() {
                     <Input
                       id="subject"
                       name="subject"
-                      placeholder="AI develpoer"
+                      placeholder="enter your role"
                       value={formData.subject}
                       onChange={handleChange}
                       required
@@ -143,7 +143,7 @@ export default function Contact() {
                     <Textarea
                       id="message"
                       name="message"
-                      placeholder="conert idea to projects!!"
+                      placeholder="ask me anything!!"
                       rows={6}
                       value={formData.message}
                       onChange={handleChange}
