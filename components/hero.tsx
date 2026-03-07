@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 
 export default function Hero() {
   const [text, setText] = useState("")
-  const fullText = "AI Enthusiast"
+  const fullText = "AI || Machine Learning Developer"
 
   useEffect(() => {
     let i = 0
@@ -42,7 +42,7 @@ export default function Hero() {
             <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-4 whitespace-nowrap">
               Hi, I'm <span className="text-primary">DhananJeyan G</span>
             </h1>
-            <h2 className="text-2xl md:text-3xl font-medium text-muted-foreground mb-6">
+            <h2 className="text-2xl md:text-3xl font-medium text-muted-foreground mb-6 whitespace-nowrap overflow-hidden text-ellipsis">
               <span className="text-foreground">{text}</span>
               <span className="animate-blink">|</span>
             </h2>
