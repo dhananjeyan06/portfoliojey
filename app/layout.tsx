@@ -4,12 +4,14 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 
+import { Toaster } from "@/components/ui/sonner"
+
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "MemoryLeaked | Portfolio",
   description: "Professional portfolio of MemoryLeaked - AI Enthusiast",
-  generator: 'v0.app'
+  generator: "v0.app",
 }
 
 export default function RootLayout({
@@ -20,7 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider defaultTheme="dark">{children}</ThemeProvider>
+        <ThemeProvider defaultTheme="dark">
+          {children}
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   )

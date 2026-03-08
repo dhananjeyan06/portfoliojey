@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { toast } from "sonner"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -63,10 +64,14 @@ export default function Navbar() {
                 {link.name}
               </button>
             ))}
-            <Button asChild>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                Resume
-              </a>
+            <Button
+              onClick={() =>
+                toast.info("Resume not included right now!", {
+                  description: "Please check back later or contact me directly.",
+                })
+              }
+            >
+              Resume
             </Button>
           </nav>
 
@@ -91,10 +96,16 @@ export default function Navbar() {
                   {link.name}
                 </button>
               ))}
-              <Button className="w-full" asChild>
-                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                  Resume
-                </a>
+              <Button
+                className="w-full"
+                onClick={() => {
+                  setIsOpen(false)
+                  toast.info("Resume not included right now!", {
+                    description: "Please check back later or contact me directly.",
+                  })
+                }}
+              >
+                Resume
               </Button>
             </nav>
           </div>
