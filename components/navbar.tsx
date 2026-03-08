@@ -4,11 +4,17 @@ import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { motion, AnimatePresence } from "framer-motion"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [showResumeNotice, setShowResumeNotice] = useState(false)
+
+  const handleResumeClick = () => {
+    setShowResumeNotice(true)
+    setTimeout(() => setShowResumeNotice(false), 2000)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,17 +70,22 @@ export default function Navbar() {
                 {link.name}
               </button>
             ))}
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button>Resume</Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-auto p-4">
-                <div className="space-y-2">
-                  <h4 className="font-medium leading-none">Not included right now!</h4>
-                  <p className="text-sm text-muted-foreground">Please check back later or contact me directly.</p>
-                </div>
-              </PopoverContent>
-            </Popover>
+            <div className="relative">
+              <Button onClick={handleResumeClick}>Resume</Button>
+              <AnimatePresence>
+                {showResumeNotice && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 5, scale: 0.95 }}
+                    className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 whitespace-nowrap bg-destructive text-destructive-foreground px-3 py-1.5 rounded-md text-sm font-medium shadow-lg z-50"
+                  >
+                    Not included right now!
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-destructive"></div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </nav>
 
           {/* Mobile Navigation Toggle */}
@@ -98,17 +109,24 @@ export default function Navbar() {
                   {link.name}
                 </button>
               ))}
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button className="w-full">Resume</Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-4" side="top">
-                  <div className="space-y-2">
-                    <h4 className="font-medium leading-none">Not included right now!</h4>
-                    <p className="text-sm text-muted-foreground">Please check back later or contact me directly.</p>
-                  </div>
-                </PopoverContent>
-              </Popover>
+              <div className="relative">
+                <Button className="w-full" onClick={handleResumeClick}>
+                  Resume
+                </Button>
+                <AnimatePresence>
+                  {showResumeNotice && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 whitespace-nowrap bg-destructive text-destructive-foreground px-3 py-1.5 rounded-md text-sm font-medium shadow-lg z-50"
+                    >
+                      Not included right now!
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-destructive"></div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </nav>
           </div>
         </div>
