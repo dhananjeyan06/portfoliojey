@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { toast } from "sonner"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -64,15 +64,17 @@ export default function Navbar() {
                 {link.name}
               </button>
             ))}
-            <Button
-              onClick={() =>
-                toast.info("Resume not included right now!", {
-                  description: "Please check back later or contact me directly.",
-                })
-              }
-            >
-              Resume
-            </Button>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button>Resume</Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-4">
+                <div className="space-y-2">
+                  <h4 className="font-medium leading-none">Not included right now!</h4>
+                  <p className="text-sm text-muted-foreground">Please check back later or contact me directly.</p>
+                </div>
+              </PopoverContent>
+            </Popover>
           </nav>
 
           {/* Mobile Navigation Toggle */}
@@ -96,17 +98,17 @@ export default function Navbar() {
                   {link.name}
                 </button>
               ))}
-              <Button
-                className="w-full"
-                onClick={() => {
-                  setIsOpen(false)
-                  toast.info("Resume not included right now!", {
-                    description: "Please check back later or contact me directly.",
-                  })
-                }}
-              >
-                Resume
-              </Button>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button className="w-full">Resume</Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-4" side="top">
+                  <div className="space-y-2">
+                    <h4 className="font-medium leading-none">Not included right now!</h4>
+                    <p className="text-sm text-muted-foreground">Please check back later or contact me directly.</p>
+                  </div>
+                </PopoverContent>
+              </Popover>
             </nav>
           </div>
         </div>
