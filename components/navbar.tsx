@@ -63,7 +63,11 @@ export default function Navbar() {
                 {link.name}
               </button>
             ))}
-            <Button>Resume</Button>
+            <Button asChild>
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                Resume
+              </a>
+            </Button>
           </nav>
 
           {/* Mobile Navigation Toggle */}
@@ -87,7 +91,11 @@ export default function Navbar() {
                   {link.name}
                 </button>
               ))}
-              <Button className="w-full">Resume</Button>
+              <Button className="w-full" asChild>
+                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                  Resume
+                </a>
+              </Button>
             </nav>
           </div>
         </div>
